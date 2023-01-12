@@ -30,6 +30,9 @@ public class playerController : MonoBehaviour
     {
         m_Rigidbody.velocity = new Vector2 (horiMovement*playerSpeed, m_Rigidbody.velocity.y);
         flipChar(horiMovement);
+        // i dont think this works ngl TODO fix pls
+        // like 11 mins into the video
+        m_Animator.SetFloat("animPlayerSpeed", Mathf.Abs(horiMovement));
     }
     private void flipChar(float horizontal)
     {
