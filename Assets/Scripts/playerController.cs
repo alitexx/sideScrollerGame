@@ -10,6 +10,9 @@ public class playerController : MonoBehaviour
     private Rigidbody2D m_Rigidbody;
     private bool facingRight = true;
 
+    // lives
+    public static int playerHealth = 3;
+
     public float playerSpeed = 2.0f;
     public float horiMovement;
     void Start()
@@ -30,9 +33,7 @@ public class playerController : MonoBehaviour
     {
         m_Rigidbody.velocity = new Vector2 (horiMovement*playerSpeed, m_Rigidbody.velocity.y);
         flipChar(horiMovement);
-        // i dont think this works ngl TODO fix pls
-        // like 11 mins into the video
-        m_Animator.SetFloat("animPlayerSpeed", Mathf.Abs(horiMovement));
+        m_Animator.SetFloat("velocity", Mathf.Abs(horiMovement));
     }
     private void flipChar(float horizontal)
     {
