@@ -9,7 +9,8 @@ public class playerJump : MonoBehaviour
     //public variables
     [Header("Jump Details")]
     public float jumpForce;
-    public bool grounded;
+    // used in bullet script
+    public static bool grounded;
     public float jumpTime;
     private float jumpTimeCounter;
     private bool stoppedJumping;

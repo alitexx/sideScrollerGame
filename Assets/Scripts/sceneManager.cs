@@ -21,12 +21,6 @@ public class sceneManager : MonoBehaviour
     {
         Debug.Log("Changing Scenes!");
         clickButton.Play();
-        Cursor.lockState = CursorLockMode.Locked;
-        //if (Time.deltaTime == 0f)
-        //{
-        //    Time.timeScale = 1f;
-        //    Cursor.lockState = CursorLockMode.Locked;
-        //}
         StartCoroutine(FadeBlackOutSquare(sceneName));
     }
 

@@ -41,9 +41,15 @@ public class playerController : MonoBehaviour
         {
             facingRight = !facingRight;
 
-            Vector3 scaleVal = transform.localScale;
-            scaleVal.x *= -1;
-            transform.localScale = scaleVal;
+            transform.Rotate(0f, 180f, 0f);
+        }
+    }
+
+    public static void takeDamage()
+    {
+        if (playerHealth <= 0)
+        {
+            // do something
         }
     }
 }
