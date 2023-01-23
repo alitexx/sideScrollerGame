@@ -10,10 +10,12 @@ public class toggleWInLose : MonoBehaviour
     [SerializeField] Canvas winScreen;
     public AudioSource win1;
     public AudioSource win2;
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        playerController player = collision.GetComponent<playerController>();
-        if (player != null) {
+        playerController player = collision.gameObject.GetComponent<playerController>();
+        if (player != null)
+        {
             win1.Play();
             playWinScreen();
         }

@@ -27,13 +27,13 @@ public class enemyController : MonoBehaviour
         Xdirection = -1f;
         moveSpeed = 3f;
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.tag == "ground")
+        if (collision.gameObject.tag == "ground")
         {
             Xdirection *= -1f;
-        } else if (collision.tag == "Player")
+        }
+        else if (collision.gameObject.tag == "Player")
         {
             playerController.playerHealth -= 1;
             if (playerController.playerHealth <= 0)
@@ -64,7 +64,7 @@ public class enemyController : MonoBehaviour
         {
             facingRight = !facingRight;
         }
-        transform.localScale = localScale;
+        transform.Rotate(0f, 180f, 0f);
     }
 
 
