@@ -18,8 +18,8 @@ public class pauseMenuManager : MonoBehaviour
     }
     public void togglePause()
     {
+        pauseMenu.gameObject.SetActive(!pauseMenu.gameObject.activeInHierarchy);
         Enemies.SetActive(!Enemies.activeInHierarchy);
         player.SetActive(!player.activeInHierarchy);
-        pauseMenu.enabled = !pauseMenu.enabled;
     }
 }

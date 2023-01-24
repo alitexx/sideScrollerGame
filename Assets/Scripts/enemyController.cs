@@ -27,18 +27,20 @@ public class enemyController : MonoBehaviour
         Xdirection = -1f;
         moveSpeed = 3f;
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag == "ground")
+        if (collision.gameObject.tag == "Wall")
         {
+            Debug.Log("i have touched a wall");
             Xdirection *= -1f;
         }
-        else if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
+            Xdirection *= -1f;
             playerController.playerHealth -= 1;
             if (playerController.playerHealth <= 0)
             {
-                loseGUI.enabled = !loseGUI.enabled;
+                loseGUI.gameObject.SetActive(!loseGUI.gameObject.activeInHierarchy);
                 lose1.Play();
                 lose2.Play();
             }
@@ -52,19 +54,12 @@ public class enemyController : MonoBehaviour
 
     void checkDirection()
     {
-        if (Xdirection > 0)
-        {
-            facingRight = true;
-        } else if (Xdirection < 0)
-        {
-            facingRight = false;
-        }
-
-        if ((localScale.x < 0 && facingRight) || (localScale.x > 0 && !facingRight))
+        if ((Xdirection < 0 && facingRight) || (Xdirection > 0 && !facingRight))
         {
             facingRight = !facingRight;
+
+            transform.Rotate(0f, 180f, 0f);
         }
-        transform.Rotate(0f, 180f, 0f);
     }
 
 
