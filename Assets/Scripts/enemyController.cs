@@ -38,7 +38,8 @@ public class enemyController : MonoBehaviour
         if (collision.gameObject.tag == "Player" && debounce == false)
         {
             debounce = true;
-            playerAnimator.SetBool("takingDamage", true);
+            playerAnimator.SetTrigger("takingDamage");
+            playerAnimator.ResetTrigger("endDamage");
             updateRotation();
             audioManager.takeDamage();
             healthGUI.transform.GetChild(playerController.playerHealth).gameObject.SetActive(false);
@@ -86,7 +87,8 @@ public class enemyController : MonoBehaviour
             audioManager.loseGame();
         }
         yield return new WaitForSeconds(0.5f);
-        playerAnimator.SetBool("takingDamage", false);
+        playerAnimator.SetTrigger("endDamage");
+        playerAnimator.ResetTrigger("takingDamage");
         debounce = false;
     }
 
