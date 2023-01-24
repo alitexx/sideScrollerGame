@@ -26,12 +26,11 @@ public class playerController : MonoBehaviour
     void Update()
     {
         horiMovement = Input.GetAxisRaw("Horizontal");
-
     }
 
     private void FixedUpdate()
     {
-        m_Rigidbody.velocity = new Vector2 (horiMovement*playerSpeed, m_Rigidbody.velocity.y);
+        m_Rigidbody.velocity = new Vector2(horiMovement * playerSpeed, m_Rigidbody.velocity.y);
         flipChar(horiMovement);
         m_Animator.SetFloat("velocity", Mathf.Abs(horiMovement));
     }
@@ -42,14 +41,6 @@ public class playerController : MonoBehaviour
             facingRight = !facingRight;
 
             transform.Rotate(0f, 180f, 0f);
-        }
-    }
-
-    public static void takeDamage()
-    {
-        if (playerHealth <= 0)
-        {
-            // do something
         }
     }
 }
