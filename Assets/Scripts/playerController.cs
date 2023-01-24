@@ -17,7 +17,7 @@ public class playerController : MonoBehaviour
     public float horiMovement;
     void Start()
     {
-
+        playerHealth = 3;
         m_Rigidbody = GetComponent<Rigidbody2D>();
         m_Animator = GetComponent<Animator>();
     }

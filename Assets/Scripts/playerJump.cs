@@ -54,6 +54,7 @@ public class playerJump : MonoBehaviour
         if (Input.GetButtonDown("Jump") && grounded)
         {
             // jump
+            audioManager.playerJump();
             rigidBod.velocity = new Vector2(rigidBod.velocity.x, jumpForce);
             stoppedJumping = false;
             // tell anim to play animation
@@ -63,6 +64,7 @@ public class playerJump : MonoBehaviour
         if (Input.GetButton("Jump") && !stoppedJumping && (jumpTimeCounter > 0))
         {
             // jump
+            audioManager.playerJump();
             rigidBod.velocity = new Vector2(rigidBod.velocity.x, jumpForce);
             jumpTimeCounter -= Time.deltaTime;
             animator.SetTrigger("jump");

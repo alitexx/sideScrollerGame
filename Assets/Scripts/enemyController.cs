@@ -35,10 +35,12 @@ public class enemyController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" && debounce == false)
         {
+            debounce = true;
+            playerAnimator.SetBool("takingDamage", true);
             updateRotation();
-            Debug.Log("HEY YOU!!! MOVE!!!!!!!!!!");
+            audioManager.takeDamage();
             healthGUI.transform.GetChild(playerController.playerHealth).gameObject.SetActive(false);
             playerController.playerHealth -= 1;
             StartCoroutine(Debounced());
@@ -80,10 +82,11 @@ public class enemyController : MonoBehaviour
         {
             loseGUI.gameObject.SetActive(!loseGUI.gameObject.activeInHierarchy);
             rigidBod.gameObject.SetActive(false);
-            lose1.Play();
-            lose2.Play();
+            playerAnimator.gameObject.SetActive(false);
+            audioManager.loseGame();
         }
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
+        playerAnimator.SetBool("takingDamage", false);
         debounce = false;
     }
 

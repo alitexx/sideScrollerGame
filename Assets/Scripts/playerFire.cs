@@ -35,6 +35,7 @@ public class playerFire : MonoBehaviour
             {
                 m_Animator.SetTrigger("shooting");
             }
+            audioManager.playerShoot();
             Shoot();
             yield return new WaitForSeconds(0.5f);
             m_Animator.ResetTrigger("shootingRun");
