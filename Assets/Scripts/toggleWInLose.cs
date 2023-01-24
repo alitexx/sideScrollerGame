@@ -13,8 +13,7 @@ public class toggleWInLose : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        playerController player = collision.gameObject.GetComponent<playerController>();
-        if (player != null)
+        if (collision.gameObject.tag == "Player")
         {
             win1.Play();
             playWinScreen();
@@ -25,7 +24,7 @@ public class toggleWInLose : MonoBehaviour
     {
         Enemies.SetActive(!Enemies.activeInHierarchy);
         player.SetActive(!player.activeInHierarchy);
-        winScreen.enabled = !winScreen.enabled;
+        winScreen.gameObject.SetActive(!winScreen.gameObject.activeInHierarchy);
         win2.Play();
     }
 }

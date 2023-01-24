@@ -17,9 +17,9 @@ public class playerController : MonoBehaviour
     public float horiMovement;
     void Start()
     {
+
         m_Rigidbody = GetComponent<Rigidbody2D>();
         m_Animator = GetComponent<Animator>();
-
     }
 
     // Update is called once per frame

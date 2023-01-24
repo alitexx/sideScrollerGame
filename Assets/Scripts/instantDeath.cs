@@ -8,13 +8,13 @@ public class instantDeath : MonoBehaviour
     public AudioSource lose1;
     public AudioSource lose2;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        playerController player = collision.GetComponent<playerController>();
-        if (player != null)
+        if (collision.gameObject.tag == "Player")
         {
+            Debug.Log("INSTANT DEATH");
             playerController.playerHealth = 0;
-            loseGUI.enabled = !loseGUI.enabled;
+            loseGUI.gameObject.SetActive(!loseGUI.gameObject.activeInHierarchy);
             lose1.Play();
             lose2.Play();
         }
